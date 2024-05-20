@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import Link from "next/link";
 
 const { Header, Content, Footer } = Layout;
 
@@ -9,10 +10,12 @@ const items = [
     {
         key: 0,
         label: `Home`,
+        path: "/"
     },
     {
         key: 1,
         label: `About`,
+        path: "/about"
     },
 ];
 
@@ -25,13 +28,15 @@ const App: React.FC = () => {
         <Layout style={{ minHeight: "100vh" }}>
             <Header style={{ display: "flex", alignItems: "center" }}>
                 <div className="demo-logo" />
+                {/*TODO: Create a navbar that can navigate to other pages and appear in the top of all pages*/}
                 <Menu
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={["2"]}
-                    items={items}
                     style={{ flex: 1, minWidth: 0 }}
-                />
+                >
+                    {items.map((page) => <Menu.Item key={page.key}><Link href={page.path}>{page.label}</Link></Menu.Item>)}
+                </Menu>
             </Header>
             <Content style={{ padding: "0 48px" }}>
                 <Breadcrumb style={{ margin: "16px 0" }}>
@@ -45,6 +50,9 @@ const App: React.FC = () => {
                         minHeight: 280,
                         padding: 24,
                         borderRadius: borderRadiusLG,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}
                 >
                     Content
