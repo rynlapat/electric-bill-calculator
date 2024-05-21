@@ -1,8 +1,13 @@
-import React from 'react'
+"use client"
 
-function AboutSection() {
+import React from 'react'
+import { Typography } from "antd";
+
+const { Title } = Typography;
+
+const AboutSection: React.FC = () => {
   return (
-    <div>AboutSection</div>
+    <Title>About Us</Title>
   )
 }
 
