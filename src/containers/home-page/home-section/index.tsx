@@ -1,9 +1,18 @@
-import React from 'react'
+"use client"
 
-function HomeSection() {
-  return (
-    <div>HomeSection</div>
-  )
-}
+import React from "react";
+import HomeInfoSection from "../info-section";
+import { Typography } from "antd";
 
-export default HomeSection
+const { Title } = Typography;
+
+const HomeSection: React.FC = () => {
+    return (
+        <>
+            <Title>Electric Bill Calculator</Title>
+            {/* <HomeInfoSection /> */}
+        </>
+    );
+};
+
+export default HomeSection;

@@ -1,13 +1,13 @@
 import MainLayout from "@/components/layout/MainLayout";
-import HomeSection from "@/containers/home-page/home-section";
+import AboutSection from "@/containers/about-page/about-section";
 import React from "react";
 
-const App: React.FC = () => {
+function AboutPage() {
     return (
         <MainLayout>
-            <HomeSection />
+            <AboutSection />
         </MainLayout>
     );
-};
+}
 
-export default App;
+export default AboutPage;

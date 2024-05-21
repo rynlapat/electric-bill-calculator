@@ -1,8 +1,10 @@
 import React from 'react'
+import { Typography } from "antd";
 
-function HomeInfoSection() {
+const { Text } = Typography;
+const HomeInfoSection: React.FC = () => {
   return (
-    <div>HomeInfoSection</div>
+    <Text>HomeInfoSection</Text>
   )
 }
 
