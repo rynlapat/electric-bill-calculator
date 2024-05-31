@@ -15,7 +15,7 @@ const MainLayout = ({children}: React.PropsWithChildren) => {
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <MainHeader />
-            <Content style={{ padding: "0 48px" }}>
+            <Content style={{ padding: "0 .75rem" }}>
                 <Breadcrumb style={{ margin: "16px 0" }}>
                     {/* <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -23,9 +23,9 @@ const MainLayout = ({children}: React.PropsWithChildren) => {
                 </Breadcrumb>
                 <div
                     style={{
-                        background: colorBgContainer,
-                        minHeight: 280,
-                        padding: 24,
+                        // background: colorBgContainer,
+                        minHeight: "calc(100vh) - 280px",
+                        padding: "1rem",
                         borderRadius: borderRadiusLG,
                         display: "flex",
                         justifyContent: "center",
