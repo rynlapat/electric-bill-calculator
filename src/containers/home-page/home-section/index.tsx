@@ -20,6 +20,17 @@ const HomeSection: React.FC = () => {
     const [mainHouseRes, setMainHouseRes] = useState<number>(0);
     const [subHouseRes, setSubHouseRes] = useState<number>(0);
 
+    const [isCalculateDisabled, setIsCalculateDisabled] = useState<boolean>(true);
+
+    const setDefaultState = () => {
+        setEnergyFee(null);
+        setMainHouse(null);
+        setSubHouse(null);
+        setServiceFee(null);
+        setFtCharge(null);
+        setVatFee(null);
+    };
+
     const handleOnClickCalculate = () => {
         const { mainHouseBill, subHouseBill } = electricCalculate(
             energyFee as number,
@@ -29,9 +40,24 @@ const HomeSection: React.FC = () => {
             ftCharge as number,
             vatFee as number
         );
+
         setMainHouseRes(mainHouseBill);
         setSubHouseRes(subHouseBill);
+
+        setDefaultState();
     };
+
+    useEffect(() => {
+        const checkCalculateButtonDisabled = () => {
+            if (energyFee && mainHouse && subHouse && serviceFee && ftCharge && vatFee) {
+                setIsCalculateDisabled(false);
+            } else {
+                setIsCalculateDisabled(true);
+            }
+        };
+
+        checkCalculateButtonDisabled();
+    }, [energyFee, mainHouse, subHouse, serviceFee, ftCharge, vatFee]);
 
     return (
         <Content
@@ -120,7 +146,12 @@ const HomeSection: React.FC = () => {
                     />
                 </Flex>
                 <Flex gap="middle" vertical justify="center" align="center">
-                    <Button type="primary" style={{padding: "24px 32px", display: "flex" ,alignItems: "center", fontSize: "1rem" }} onClick={handleOnClickCalculate}>
+                    <Button
+                        type="primary"
+                        style={{ padding: "24px 32px", display: "flex", alignItems: "center", fontSize: "1rem" }}
+                        onClick={handleOnClickCalculate}
+                        disabled={isCalculateDisabled}
+                    >
                         Calculate
                     </Button>
                 </Flex>
